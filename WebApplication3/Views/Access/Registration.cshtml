@@ -32,7 +32,12 @@
                         <input asp-for="Password" type="password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-
+                    <div class="form-group">
+                        <label asp-for="LoaiUser" class="control-label"></label>
+                        <input asp-for="LoaiUser" class="form-control" />
+                        <span asp-validation-for="LoaiUser" class="text-danger"></span>
+                        <p>Admin = 1</p>
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Create" class="btn btn-primary" />
                     </div>

@@ -26,7 +26,14 @@ namespace WebApplication3.Controllers
                 if (u != null)
                 {
                     HttpContext.Session.SetString("UserName", u.Username.ToString());
-                    return RedirectToAction("Index", "Home");
+                    if (user.LoaiUser == 1)
+                    {
+                        return Redirect("https://localhost:7068/Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
             return View();
@@ -57,7 +64,14 @@ namespace WebApplication3.Controllers
                 db.SaveChanges();
 
                 HttpContext.Session.SetString("UserName", newUser.Username);
-                return RedirectToAction("Index", "Home");
+                if (newUser.LoaiUser == 1)
+                {
+                    return Redirect("https://localhost:7068/Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return RedirectToAction("Index", "Home");
         }
