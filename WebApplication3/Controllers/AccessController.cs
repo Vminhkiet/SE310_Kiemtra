@@ -31,6 +31,37 @@ namespace WebApplication3.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult Registration()
+        {
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Registration(TUser newUser)
+        {
+            if (HttpContext.Session.GetString("UserName") == null)
+            {
+                var existingUser = db.TUsers.FirstOrDefault(x => x.Username == newUser.Username);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Username", "Username already exists.");
+                    return View(newUser);
+                }
+
+                db.TUsers.Add(newUser);
+                db.SaveChanges();
+
+                HttpContext.Session.SetString("UserName", newUser.Username);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
