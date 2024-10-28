@@ -36,17 +36,13 @@ namespace WebApplication3.Areas.Admin.Controllers
             PagedList<TUser> lst = new PagedList<TUser>(listsanpham, pagedNumber, pageSize);
             return View(lst);
         }
-        [Route("ThemSanPhamMoi")]
+        [Route("ThemTaiKhoanMoi")]
         [HttpGet]
-        public IActionResult ThemSanPhamMoi()
+        public IActionResult ThemTaiKhoanMoi()
         {
-            ViewBag.MaChatLieu = new SelectList(db.TChatLieus.ToList(), "MaChatLieu", "ChatLieu");
-            ViewBag.MaHangSx = new SelectList(db.THangSxes.ToList(), "MaHangSx", "HangSx");
-            ViewBag.MaNuocSx = new SelectList(db.TQuocGia.ToList(), "MaNuoc", "TenNuoc");
-            ViewBag.MaLoai = new SelectList(db.TLoaiSps.ToList(), "MaLoai", "Loai");
-            ViewBag.MaDt = new SelectList(db.TLoaiDts.ToList(), "MaDt", "TenLoai");
             return View();
         }
+        
         [Route("ThemSanPhamMoi")]
         [HttpPost]
         [ValidateAntiForgeryToken]
