@@ -24,7 +24,7 @@ namespace WebApplication3.Controllers
                            }).ToList();
             return sanPham;
         }
-        [HttpGet("{maloai}")]
+        [HttpGet("maloai={maloai}")]
         public IEnumerable<Product> GetProductsByCategory(string maLoai)
         {
             var sanPham = (from p in db.TDanhMucSps
@@ -38,6 +38,20 @@ namespace WebApplication3.Controllers
                                GiaNhoNhat = p.GiaNhoNhat,
                            }).ToList();
             return sanPham;
+        }
+        [HttpGet("masp={masp}")]
+        public IActionResult GetProductsDetailByCategory(string masp)
+        {
+            var sanPham = (from p in db.TChiTietSanPhams
+                           where p.MaSp.Trim().Equals(masp.Trim())
+                           select p
+                           ).FirstOrDefault();
+            if (sanPham == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(sanPham);
         }
     }
 }

@@ -22,7 +22,7 @@
   {
     "ContainingType": "WebApplication3.Controllers.ProductAPIController",
     "Method": "GetProductsByCategory",
-    "RelativePath": "api/ProductAPI/{maloai}",
+    "RelativePath": "api/ProductAPI/maloai={maloai}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -44,5 +44,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "WebApplication3.Controllers.ProductAPIController",
+    "Method": "GetProductsDetailByCategory",
+    "RelativePath": "api/ProductAPI/masp={masp}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "masp",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
