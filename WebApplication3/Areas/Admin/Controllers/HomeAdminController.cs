@@ -27,6 +27,15 @@ namespace WebApplication3.Areas.Admin.Controllers
             PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(listsanpham, pagedNumber, pageSize);
             return View(lst);
         }
+        [Route("danhmuctaikhoan")]
+        public IActionResult DanhMucTaiKhoan(int? page)
+        {
+            int pageSize = 12;
+            int pagedNumber = page == null || page < 0 ? 1 : page.Value;
+            var listsanpham = db.TUsers.AsNoTracking().OrderBy(x => x.Username);
+            PagedList<TUser> lst = new PagedList<TUser>(listsanpham, pagedNumber, pageSize);
+            return View(lst);
+        }
         [Route("ThemSanPhamMoi")]
         [HttpGet]
         public IActionResult ThemSanPhamMoi()
